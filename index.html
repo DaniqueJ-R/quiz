@@ -306,10 +306,7 @@
     Next.addEventListener('click', nextQuest)
 
     function nextQuest() {
-
-      if (newBtn !== 'click') {
-        alert('Select an answer to continue!')
-      } else {
+      
         const lquiz = quizData.length;
 
         for (let i = questionNum; i < lquiz;) {
@@ -342,10 +339,7 @@
 
           break;
         }
-      }
-
-
-
+      
     };
 
 
@@ -353,7 +347,7 @@
     function correctAns(btn) {
       btn.addEventListener('click', function () {
         console.log('Button clicked:', btn.value);
-        for (let i = questionNum; i < lquiz;) {
+        for (let i = questionNum; i <= lquiz;) {
           let quizCorrect = quizData[i].correct;
           let questAns = quizCorrect.toString();
           console.log(`Answer to question ${i} is number ${questAns}`) // reading correcly
@@ -363,11 +357,11 @@
             console.log('True')
             score = score + 1
             console.log(score)
-
+            btn.classList.add('correct')
           } else {
             console.log('False')
             console.log(score)
-
+            btn.classList.add('wrong')
           }
 
           break;
