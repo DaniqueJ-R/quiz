@@ -88,7 +88,7 @@
       border-color: #f44336;
     }
 
-    .answer-btn:disabled {
+    .answer-btn.disabled {
       cursor: not-allowed;
       opacity: 0.7;
     }
@@ -334,7 +334,6 @@
 
           let answerBtn = document.getElementsByClassName('answer-btn');
           newBtn = Array.from(answerBtn)
-
           newBtn.forEach(correctAns)
 
           break;
@@ -346,11 +345,11 @@
     // 2. When user clicks an answer, check if it's correct - done
     function correctAns(btn) {
       btn.addEventListener('click', function () {
-        console.log('Button clicked:', btn.value);
+        console.log('Button clicked:', btn);
         for (let i = questionNum; i <= lquiz;) {
           let quizCorrect = quizData[i].correct;
           let questAns = quizCorrect.toString();
-          console.log(`Answer to question ${i} is number ${questAns}`) // reading correcly
+          console.log(`Answer to question ${i} is number ${questAns}`) 
 
           // answers area working
           if (btn.value == questAns) {
@@ -362,7 +361,15 @@
             console.log('False')
             console.log(score)
             btn.classList.add('wrong')
+         
           }
+          
+          
+          newBtn.forEach(function(button) {
+            console.log('Add disabled')
+            button.disabled = true;
+            button.classList.add('disabled')
+          })
 
           break;
 
@@ -370,6 +377,12 @@
       }
       )
     };
+
+    // to do
+    // Add disable after answer selected
+    // add colour to both correct naad wrong answer
+    // fix last question selection
+    // create func to see if answer selected to alarm if no ans selected
 
   </script>
 </body>
