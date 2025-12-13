@@ -345,28 +345,24 @@
     // 2. When user clicks an answer, check if it's correct - done
     function correctAns(btn) {
       btn.addEventListener('click', function () {
-        console.log('Button clicked:', btn);
+        // console.log('Button clicked:', btn);
         for (let i = questionNum; i <= lquiz;) {
           let quizCorrect = quizData[i].correct;
           let questAns = quizCorrect.toString();
-          console.log(`Answer to question ${i} is number ${questAns}`) 
+          // console.log(`Answer to question ${i} is number ${questAns}`) 
 
           // answers area working
           if (btn.value == questAns) {
-            console.log('True')
             score = score + 1
-            console.log(score)
             btn.classList.add('correct')
           } else {
-            console.log('False')
-            console.log(score)
             btn.classList.add('wrong')
-         
           }
           
-          
           newBtn.forEach(function(button) {
-            console.log('Add disabled')
+              if (button.value == questAns) {
+            button.classList.add('correct')}
+
             button.disabled = true;
             button.classList.add('disabled')
           })
