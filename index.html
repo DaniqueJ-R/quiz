@@ -265,17 +265,15 @@
     const Next = document.getElementById('next-btn');
     const lquiz = quizData.length;
     let score = 0;
-    let questionNum = 0
-    let i = questionNum
+    let i = 0;
 
     window.onload = function () {
       while (i === 0) {
 
-        console.log(i)
+        console.log('i is ', i, 'and QuestionNum is ', questionNum)
         let quizQues = quizData[i].question;
         let quizStr = quizQues.toString();
         questionArea.innerHTML = quizStr;
-        console.log(quizStr)
 
         // answers area
         let ansNum = quizData[i].answers;
@@ -286,12 +284,10 @@
           list += `<li><button class="answer-btn" name="answer" value="${j}">${ansNum[j]}</button></li>`;
         }
         list += '</ul>';
-        if (i === 0) {
-          i++
-          progress.innerHTML = `Question ${[i]} of 5`
-        }
+        
+        progress.innerHTML = `Question ${[i + 1]} of 5`
+
         answersArea.innerHTML = list;
-        questionNum = i
 
         let answerBtn = document.getElementsByClassName('answer-btn');
         newBtn = Array.from(answerBtn)
@@ -306,10 +302,10 @@
     Next.addEventListener('click', nextQuest)
 
     function nextQuest() {
-      
-        const lquiz = quizData.length;
 
-        for (let i = questionNum; i < lquiz;) {
+        for (i; i < lquiz;) {
+          i++
+          console.log('question ran', i)
           let quizQues = quizData[i].question;
           let quizStr = quizQues.toString();
           questionArea.innerHTML = quizStr;
@@ -324,34 +320,32 @@
           }
           list += '</ul>';
 
-          if (i < lquiz) {
-            i++
-            progress.innerHTML = `Question ${[i]} of 5`
-          }
 
           answersArea.innerHTML = list;
-          questionNum = i
+
+                    if (i <= lquiz) {
+            progress.innerHTML = `Question ${[i + 1]} of ${[lquiz]}`
+          }
 
           let answerBtn = document.getElementsByClassName('answer-btn');
           newBtn = Array.from(answerBtn)
           newBtn.forEach(correctAns)
-
-          break;
+        
+        break;
         }
-      
     };
 
 
     // 2. When user clicks an answer, check if it's correct - done
     function correctAns(btn) {
       btn.addEventListener('click', function () {
-        // console.log('Button clicked:', btn);
-        for (let i = questionNum; i <= lquiz;) {
+
+        for (i; i <= lquiz;) {
           let quizCorrect = quizData[i].correct;
           let questAns = quizCorrect.toString();
-          // console.log(`Answer to question ${i} is number ${questAns}`) 
+          console.log(`Answer to question ${i} is number ${questAns}`) 
 
-          // answers area working
+          // answers area
           if (btn.value == questAns) {
             score = score + 1
             btn.classList.add('correct')
@@ -375,9 +369,6 @@
     };
 
     // to do
-    // Add disable after answer selected
-    // add colour to both correct naad wrong answer
-    // fix last question selection
     // create func to see if answer selected to alarm if no ans selected
 
   </script>
