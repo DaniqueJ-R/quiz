@@ -242,9 +242,9 @@
     // Steps to get you started:
     // 1. Display the first question and its answers -done
     // 2. When user clicks an answer, check if it's correct - done
-    // 3. Show feedback (green for correct, red for wrong)
-    // 4. Show the "Next Question" button
-    // 5. Move to the next question when clicked
+    // 3. Show feedback (green for correct, red for wrong) -- doone
+    // 4. Show the "Next Question" button - done
+    // 5. Move to the next question when clicked - done
     // 6. At the end, show the final score
     // 7. Allow restart
 
@@ -266,11 +266,15 @@
     const lquiz = quizData.length;
     let score = 0;
     let i = 0;
+    let answerBtn = document.getElementsByClassName('answer-btn');
+          newBtn = Array.from(answerBtn)
+    let btn = newBtn.forEach
+
 
     window.onload = function () {
       while (i === 0) {
 
-        console.log('i is ', i, 'and QuestionNum is ', questionNum)
+        console.log('i is ', i)
         let quizQues = quizData[i].question;
         let quizStr = quizQues.toString();
         questionArea.innerHTML = quizStr;
@@ -303,6 +307,9 @@
 
     function nextQuest() {
 
+      if (!document.querySelector('button').className.includes('disabled')){ //could this be simpler?
+        alert('Please select an answer to move on!')
+      } else {
         for (i; i < lquiz;) {
           i++
           console.log('question ran', i)
@@ -333,6 +340,7 @@
         
         break;
         }
+      }
     };
 
 
@@ -369,7 +377,6 @@
     };
 
     // to do
-    // create func to see if answer selected to alarm if no ans selected
 
   </script>
 </body>
