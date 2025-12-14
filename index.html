@@ -262,6 +262,8 @@
     const questionArea = document.getElementById('question');
     const answersArea = document.getElementById('answers');
     let progress = document.getElementById('progress')
+    let quizContainer = document.getElementById('quiz');
+    let scoreContainer = document.getElementById('score-container');
     const Next = document.getElementById('next-btn');
     const lquiz = quizData.length;
     let score = 0;
@@ -310,14 +312,12 @@
           i++
           console.log('question ran', i)
         if (i === lquiz){ // about 20 min to get this working 
-        let scoreContainer = document.getElementById('score-container');
-        let quizContainer = document.getElementById('quiz');
         let scoreNum = document.getElementById('final-score')
+        let Reset = document.getElementById('restart-btn')
         scoreContainer.classList.add('show')
         scoreNum.innerHTML = `Your score: ${score} / ${lquiz}`
         quizContainer.classList.add('hide')
-               // let Reset = document.getElementById('reset')
-        // Reset.addEventListener('click', resetQuiz)
+        Reset.addEventListener('click', resetQuiz)
       }
       
           let quizQues = quizData[i].question;
@@ -391,6 +391,9 @@
         console.log('reset')
         i = 0
         while (i === 0) {
+        quizContainer.classList.remove('hide')
+        scoreContainer.classList.remove('show')
+        
         let quizQues = quizData[i].question;
         let quizStr = quizQues.toString();
         questionArea.innerHTML = quizStr;
