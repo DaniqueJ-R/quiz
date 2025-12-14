@@ -31,7 +31,7 @@
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
     }
 
-    h1 {
+    h1, h2 {
       text-align: center;
       color: #333;
       margin-bottom: 30px;
@@ -245,7 +245,7 @@
     // 3. Show feedback (green for correct, red for wrong) -- doone
     // 4. Show the "Next Question" button - done
     // 5. Move to the next question when clicked - done
-    // 6. At the end, show the final score
+    // 6. At the end, show the final score - done
     // 7. Allow restart
 
     // Hints:
@@ -311,7 +311,7 @@
           console.log('question ran', i)
         if (i === lquiz){ // about 20 min to get this working 
         let quizContainer = document.getElementById('quiz');
-        quizContainer.innerHTML = `You got <strong>${score}</strong> out of <strong>${lquiz}</strong>. <br>  <br> Way too go! Want to try again?`
+        quizContainer.innerHTML = `<h2>Your results are in</h2> <p style="text-align: center;"> You got <strong>${score}</strong> out of <strong>${lquiz}</strong>. <br>  <br> Way too go! Want to try again? </p> <button>Restart</button>`
       }
           let quizQues = quizData[i].question;
           let quizStr = quizQues.toString();
@@ -378,7 +378,7 @@
     };
 
     // to do
-// final page to show score and congrats
+
 // Add reset button to do quiz again
   </script>
 </body>
