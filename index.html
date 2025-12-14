@@ -310,9 +310,16 @@
           i++
           console.log('question ran', i)
         if (i === lquiz){ // about 20 min to get this working 
+        let scoreContainer = document.getElementById('score-container');
         let quizContainer = document.getElementById('quiz');
-        quizContainer.innerHTML = `<h2>Your results are in</h2> <p style="text-align: center;"> You got <strong>${score}</strong> out of <strong>${lquiz}</strong>. <br>  <br> Way too go! Want to try again? </p> <button>Restart</button>`
+        let scoreNum = document.getElementById('final-score')
+        scoreContainer.classList.add('show')
+        scoreNum.innerHTML = `Your score: ${score} / ${lquiz}`
+        quizContainer.classList.add('hide')
+               // let Reset = document.getElementById('reset')
+        // Reset.addEventListener('click', resetQuiz)
       }
+      
           let quizQues = quizData[i].question;
           let quizStr = quizQues.toString();
           questionArea.innerHTML = quizStr;
@@ -377,9 +384,44 @@
       )
     };
 
-    // to do
 
-// Add reset button to do quiz again
+
+      function resetQuiz () {
+
+        console.log('reset')
+        i = 0
+        while (i === 0) {
+        let quizQues = quizData[i].question;
+        let quizStr = quizQues.toString();
+        questionArea.innerHTML = quizStr;
+
+        // answers area
+        let ansNum = quizData[i].answers;
+        let ansL = ansNum.length;
+        let list = '<ul>';
+
+        for (let j = 0; j < ansL; j++) {
+          list += `<li><button class="answer-btn" name="answer" value="${j}">${ansNum[j]}</button></li>`;
+        }
+        list += '</ul>';
+        
+        progress.innerHTML = `Question ${[i + 1]} of 5`
+
+        answersArea.innerHTML = list;
+
+        let answerBtn = document.getElementsByClassName('answer-btn');
+        newBtn = Array.from(answerBtn)
+
+        newBtn.forEach(correctAns)
+
+        return;
+    }
+  };
+
+
+
+    // to do
+// Add reset button to do quiz again - thoughts - copy window func and make new one for reset button alone. 
   </script>
 </body>
 
