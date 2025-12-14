@@ -266,10 +266,6 @@
     const lquiz = quizData.length;
     let score = 0;
     let i = 0;
-    let answerBtn = document.getElementsByClassName('answer-btn');
-          newBtn = Array.from(answerBtn)
-    let btn = newBtn.forEach
-
 
     window.onload = function () {
       while (i === 0) {
@@ -307,12 +303,16 @@
 
     function nextQuest() {
 
-      if (!document.querySelector('button').className.includes('disabled')){ //could this be simpler?
+      if (!document.querySelector('button').className.includes('disabled')){ //could this be simpler? took 26 min to complete
         alert('Please select an answer to move on!')
       } else {
         for (i; i < lquiz;) {
           i++
           console.log('question ran', i)
+        if (i === lquiz){ // about 20 min to get this working 
+        let quizContainer = document.getElementById('quiz');
+        quizContainer.innerHTML = `You got <strong>${score}</strong> out of <strong>${lquiz}</strong>. <br>  <br> Way too go! Want to try again?`
+      }
           let quizQues = quizData[i].question;
           let quizStr = quizQues.toString();
           questionArea.innerHTML = quizStr;
@@ -341,6 +341,7 @@
         break;
         }
       }
+
     };
 
 
@@ -377,7 +378,8 @@
     };
 
     // to do
-
+// final page to show score and congrats
+// Add reset button to do quiz again
   </script>
 </body>
 
