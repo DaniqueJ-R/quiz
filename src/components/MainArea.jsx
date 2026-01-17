@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import quizData from '../assets/questions'
 import Questions from './Questions'
 
 export default function MainArea() {
@@ -8,6 +8,15 @@ export default function MainArea() {
     function newNum(){
         SetQuestNum(QuestNum => QuestNum + 1)
     }
+
+    const FullQuestion = quizData.map((item) => {
+        return(
+            <Questions />
+            // key={item.id}
+            // {...item}
+            // />
+        )
+    })
 
     return(
 <div className="container">

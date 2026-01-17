@@ -1,5 +1,6 @@
 export default [
-      {
+    {
+        id: 0,
         question: "What does HTML stand for?",
         answers: [
           "Hyper Text Markup Language",
@@ -9,7 +10,8 @@ export default [
         ],
         correct: 2
       },
-      { // 1
+      { 
+        id: 1,
         question: "Which language is used for styling web pages?",
         answers: [
           "JavaScript",
@@ -19,7 +21,8 @@ export default [
         ],
         correct: 2
       },
-      { // 2
+      { 
+        id: 2,
         question: "What does CSS stand for?",
         answers: [
           "Creative Style Sheets",
@@ -29,7 +32,8 @@ export default [
         ],
         correct: 1
       },
-      { // 3
+      { 
+        id: 3,
         question: "Which of these is a JavaScript framework?",
         answers: [
           "Django",
@@ -39,7 +43,8 @@ export default [
         ],
         correct: 2
       },
-      { // 4
+      { 
+        id: 4,
         question: "What is the correct syntax for a JavaScript comment?",
         answers: [
           "&lt;!-- This is a comment --&gt;",
