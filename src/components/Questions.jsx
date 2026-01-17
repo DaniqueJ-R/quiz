@@ -1,21 +1,19 @@
+// biome-ignore assist/source/organizeImports: <explanation>
 import { useState } from "react"
 import quizData from '../assets/questions'
 
-    console.log(quizData)
+    // console.log(quizData) //working
 
 export default function Questions (props) {
 
-    console.log(props)
-    const [ansLines, SetAnsLines] = useState([1, 2, 3, 4]) 
-    console.log(ansLines)
+    const [EachSet, SetEachSet] = useState(quizData[0]) 
     
-    const EachAns = ansLines.answers;
-    const ansList =  ansLines.map((answer) => {
+    const EachAns = EachSet.answers;
+    const ansList =  EachAns.map((answer) => {
         return(
             // console.log(answer)
-            <li key={answer}>
+            <li key={answer.id}>
                 <button type="submit" className="answer-btn" name="answer" value={answer}>{answer}</button>
-                {/* <button type="submit" className="answer-btn" name="answer" value={answer.id}>{answer}</button> */}
             </li>
         )
     })
@@ -23,11 +21,9 @@ export default function Questions (props) {
 
     return(
         <>
-        <p>Working?</p>
-            {/* <p>{quizData.question}</p> */}
+            <p>{EachSet.question}</p>
             <ul>
                 {ansList}
-                
             </ul>
         </>
     )
