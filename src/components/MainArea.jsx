@@ -1,12 +1,20 @@
+import { useState } from 'react';
+
 import Questions from './Questions'
 
 export default function MainArea() {
+    const [QuestNum, SetQuestNum] = useState(1)
+
+    function newNum(){
+        SetQuestNum(QuestNum => QuestNum + 1)
+    }
+
     return(
 <div className="container">
     <h1>JavaScript Quiz</h1>
 
     <div className="quiz-container" id="quiz">
-      <div className="progress" id="progress">Question 1 of 5</div>
+      <div className="progress" id="progress">Question {QuestNum} of 5</div>
 
       <div id="question">Question text will appear here</div>
 
@@ -14,7 +22,7 @@ export default function MainArea() {
         <Questions />
       </div>
 
-      <button id="next-btn">Next Question</button>
+      <button type='submit' id="next-btn">Next Question</button>
     </div>
 
     <div className="score-container" id="score-container">
@@ -25,3 +33,4 @@ export default function MainArea() {
   </div>
     )
 }
+
